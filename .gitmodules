@@ -1,0 +1,3 @@
+[submodule "TimeboxCSharp"]
+	path = TimeboxCSharp
+	url = https://github.com/alni/TimeboxCSharp.git
