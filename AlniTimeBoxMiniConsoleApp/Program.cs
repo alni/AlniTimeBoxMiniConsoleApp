@@ -80,6 +80,23 @@ namespace AlniTimeBoxMiniConsoleApp
             new Color[] {Color.Black, Color.Black,  Color.Black,  Color.Black,  Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black}
         };
 
+        public static readonly Color[][] COLOR_TEXT_MOM = new Color[][]
+        {
+            //           | ----------------- M ----------------- |              | ----------------- O ----------------- | ¨            | ----------------- M ----------------- |
+            new Color[] {Color.Orange, Color.Black,  Color.Orange, Color.Black, Color.Orange, Color.Orange, Color.Orange, Color.Black, Color.Orange, Color.Black,  Color.Orange},
+            new Color[] {Color.Orange, Color.Orange, Color.Orange, Color.Black, Color.Orange, Color.Black,  Color.Orange, Color.Black, Color.Orange, Color.Orange, Color.Orange},
+            new Color[] {Color.Orange, Color.Black,  Color.Orange, Color.Black, Color.Orange, Color.Black,  Color.Orange, Color.Black, Color.Orange, Color.Black,  Color.Orange},
+            new Color[] {Color.Orange, Color.Black,  Color.Orange, Color.Black, Color.Orange, Color.Black,  Color.Orange, Color.Black, Color.Orange, Color.Black,  Color.Orange},
+            new Color[] {Color.Orange, Color.Black,  Color.Orange, Color.Black, Color.Orange, Color.Orange, Color.Orange, Color.Black, Color.Orange, Color.Black,  Color.Orange},
+
+            new Color[] {Color.Black, Color.Black,  Color.Black,  Color.Black,  Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black},
+            new Color[] {Color.Black, Color.Black,  Color.Black,  Color.Black,  Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black},
+            new Color[] {Color.Black, Color.Black,  Color.Black,  Color.Black,  Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black},
+            new Color[] {Color.Black, Color.Black,  Color.Black,  Color.Black,  Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black},
+            new Color[] {Color.Black, Color.Black,  Color.Black,  Color.Black,  Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black},
+            new Color[] {Color.Black, Color.Black,  Color.Black,  Color.Black,  Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black, Color.Black}
+        };
+
 
         public static readonly Color[][] COLOR_ART_PIZZA = new Color[][]
         {
@@ -107,8 +124,8 @@ namespace AlniTimeBoxMiniConsoleApp
             box.SetTimeColor(Color.Orange);
             box.SetTime(DateTime.Now);
 
-            //box.ShowPixelArt(COLOR_TEXT_MA);
-            box.ShowPixelArt(COLOR_ART_PIZZA);
+            box.ShowPixelArt(COLOR_TEXT_MOM);
+            //box.ShowPixelArt(COLOR_ART_PIZZA);
 
             //box.SetTempUnit(fahrenheit: false);
             //box.SetTempUnitAndColor(Color.Aqua, fahrenheit: false);
