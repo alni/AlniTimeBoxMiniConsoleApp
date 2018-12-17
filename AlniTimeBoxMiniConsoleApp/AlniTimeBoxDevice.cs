@@ -10,6 +10,9 @@ namespace AlniTimeBoxMiniConsoleApp
 {
     class AlniTimeBoxDevice : TimeBoxDevice
     {
+        public const int MAX_DIMENSIONS_WIDTH = 11;
+        public const int MAX_DIMENSIONS_HEIGHT = 11;
+
         public static byte[] ConvertColors(Color[][] colors)
         {
             var imageBytes = new List<byte>();

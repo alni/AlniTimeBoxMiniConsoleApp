@@ -49,6 +49,7 @@
       <Link>ByteHelper.cs</Link>
     </Compile>
     <Compile Include="AlniTimeBoxDevice.cs" />
+    <Compile Include="PixelTextHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
