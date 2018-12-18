@@ -173,6 +173,16 @@ namespace AlniTimeBoxMiniConsoleApp
                 new Color[] { Color.Magenta, Color.Black, Color.Magenta }
             );*/
 
+            pixelText = CreateMessage(
+                "123 \n 456".Split(' '),
+                new Color[] { Color.DarkBlue, Color.Black, Color.DarkRed }
+            );
+
+            pixelText = CreateMessage(
+                "789 \n 000".Split(' '),
+                new Color[] { Color.DarkBlue, Color.Black, Color.DarkRed }
+            );
+
             //Color[][] pixelText = PixelTextHelper.CharsToPixelColorsWord(PIXEL_TEXT_DAD, Color.Green);
             Color[][] pixelTextFilled = PixelTextHelper.FillDimensions(pixelText);
             box.ShowPixelArt(pixelTextFilled);

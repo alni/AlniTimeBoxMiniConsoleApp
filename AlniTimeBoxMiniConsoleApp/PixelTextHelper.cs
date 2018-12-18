@@ -250,6 +250,96 @@ namespace AlniTimeBoxMiniConsoleApp
             new bool[] {  true,  true,  true }
         };
 
+        public static readonly bool[][] TEXT_CHAR_NUM_0 = new bool[][]
+        {
+            new bool[] {  true,  true,  true },
+            new bool[] {  true, false,  true },
+            new bool[] {  true, false,  true },
+            new bool[] {  true, false,  true },
+            new bool[] {  true,  true,  true }
+        };
+
+        public static readonly bool[][] TEXT_CHAR_NUM_1 = new bool[][]
+        {
+            new bool[] { false,  true, false },
+            new bool[] { false,  true, false },
+            new bool[] { false,  true, false },
+            new bool[] { false,  true, false },
+            new bool[] { false,  true, false }
+        };
+
+        public static readonly bool[][] TEXT_CHAR_NUM_2 = new bool[][]
+        {
+            new bool[] {  true,  true,  true },
+            new bool[] { false, false,  true },
+            new bool[] {  true,  true,  true },
+            new bool[] {  true, false, false },
+            new bool[] {  true,  true,  true }
+        };
+
+        public static readonly bool[][] TEXT_CHAR_NUM_3 = new bool[][]
+        {
+            new bool[] {  true,  true,  true },
+            new bool[] { false, false,  true },
+            new bool[] {  true,  true,  true },
+            new bool[] { false, false,  true },
+            new bool[] {  true,  true,  true }
+        };
+
+        public static readonly bool[][] TEXT_CHAR_NUM_4 = new bool[][]
+        {
+            new bool[] {  true, false,  true },
+            new bool[] {  true, false,  true },
+            new bool[] {  true,  true,  true },
+            new bool[] { false, false,  true },
+            new bool[] { false, false,  true }
+        };
+
+        public static readonly bool[][] TEXT_CHAR_NUM_5 = new bool[][]
+        {
+            new bool[] {  true,  true,  true },
+            new bool[] {  true, false, false },
+            new bool[] {  true,  true,  true },
+            new bool[] { false, false,  true },
+            new bool[] {  true,  true,  true }
+        };
+
+        public static readonly bool[][] TEXT_CHAR_NUM_6 = new bool[][]
+        {
+            new bool[] {  true,  true,  true },
+            new bool[] {  true, false, false },
+            new bool[] {  true,  true,  true },
+            new bool[] {  true, false,  true },
+            new bool[] {  true,  true,  true }
+        };
+
+        public static readonly bool[][] TEXT_CHAR_NUM_7 = new bool[][]
+        {
+            new bool[] {  true,  true,  true },
+            new bool[] { false, false,  true },
+            new bool[] { false, false,  true },
+            new bool[] { false, false,  true },
+            new bool[] { false, false,  true }
+        };
+
+        public static readonly bool[][] TEXT_CHAR_NUM_8 = new bool[][]
+        {
+            new bool[] {  true,  true,  true },
+            new bool[] {  true, false,  true },
+            new bool[] {  true,  true,  true },
+            new bool[] {  true, false,  true },
+            new bool[] {  true,  true,  true }
+        };
+
+        public static readonly bool[][] TEXT_CHAR_NUM_9 = new bool[][]
+        {
+            new bool[] {  true,  true,  true },
+            new bool[] {  true, false,  true },
+            new bool[] {  true,  true,  true },
+            new bool[] { false, false,  true },
+            new bool[] {  true,  true,  true }
+        };
+
 
         public static readonly bool[][] TEXT_CHAR_SPACE = new bool[][]
         {
@@ -296,6 +386,17 @@ namespace AlniTimeBoxMiniConsoleApp
             TEXT_CHAR_SET.Add("X", TEXT_CHAR_X);
             TEXT_CHAR_SET.Add("Y", TEXT_CHAR_Y);
             TEXT_CHAR_SET.Add("Z", TEXT_CHAR_Z);
+
+            TEXT_CHAR_SET.Add("0", TEXT_CHAR_NUM_0);
+            TEXT_CHAR_SET.Add("1", TEXT_CHAR_NUM_1);
+            TEXT_CHAR_SET.Add("2", TEXT_CHAR_NUM_2);
+            TEXT_CHAR_SET.Add("3", TEXT_CHAR_NUM_3);
+            TEXT_CHAR_SET.Add("4", TEXT_CHAR_NUM_4);
+            TEXT_CHAR_SET.Add("5", TEXT_CHAR_NUM_5);
+            TEXT_CHAR_SET.Add("6", TEXT_CHAR_NUM_6);
+            TEXT_CHAR_SET.Add("7", TEXT_CHAR_NUM_7);
+            TEXT_CHAR_SET.Add("8", TEXT_CHAR_NUM_8);
+            TEXT_CHAR_SET.Add("9", TEXT_CHAR_NUM_9);
 
             TEXT_CHAR_SET.Add("{SPACING}", TEXT_CHAR_SPACE); // Spacing between characters
             TEXT_CHAR_SET.Add(" ", TEXT_CHAR_SPACE); // Whitespace between words
