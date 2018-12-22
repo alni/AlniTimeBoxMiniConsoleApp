@@ -201,7 +201,32 @@ namespace AlniTimeBoxMiniConsoleApp
 
             //box.AnimateImages("C:\\Work\\projects\\Knom.TimeBox\\src\\SampleApp\\testdata\\exp");
 
-            Thread.Sleep(Int32.MaxValue);
+            while (true)
+            {
+                string[] _params = Console.ReadLine().Split(' ');
+                string command = _params[0];
+                if (command == "write")
+                {
+                    _params = string.Join(" ", _params.Skip(1).ToArray()).Split(';');
+                    string[] text = _params[0].Replace("|", "\n").Split(' ');
+                    string[] color = _params[1].Split(' ');
+                    List<Color> colors = new List<Color>();
+                    foreach (string _color in color)
+                    {
+                        colors.Add(ColorTranslator.FromHtml(_color));
+                    }
+
+                    Color[][] message = CreateMessage(
+                        text,
+                        colors.ToArray()
+                    );
+
+                    Color[][] messageFilled = PixelTextHelper.FillDimensions(message);
+
+                    box.ShowPixelArt(messageFilled);
+                }
+            }
+            //Thread.Sleep(Int32.MaxValue);
         }
 
         private static Color[][] CreateMessage(string[] text, Color[] colors)
