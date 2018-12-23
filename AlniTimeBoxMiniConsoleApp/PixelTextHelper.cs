@@ -484,6 +484,50 @@ namespace AlniTimeBoxMiniConsoleApp
         /// <returns>Array of Pixel Colors</returns>
         public static Color[][] CharsToPixelColorsWord(bool[][][] textChars, Color color)
         {
+            /* Pseudo-code logic:
+             * A:        B:        " ":
+             * 0 1 0     1 1 0     0
+             * 1 0 1     1 0 1     0
+             * 1 1 1     1 1 0     0
+             * 1 0 1     1 0 1     0
+             * 1 0 1     1 1 0     0
+             * 
+             * 
+             * A B =
+             *   charactersList = []
+             *   y = 0
+             *     _tmpRow = []
+             *       i = 0 (A):
+             *         A[0] = 0 1 0
+             *         _tmpRow = 0 1 0
+             *       i = 1 (" ")
+             *         " " = 0
+             *         _tpmRow = 0 1 0 0
+             *       i = 2 (B)
+             *         B[0] = 1 1 0
+             *         _tmpRow = 0 1 0 0 1 1 0
+             *     _tmpRow.Count > 0:
+             *       charactersList = [
+             *         0 1 0 0 1 1 0
+             *       ]
+             *    y = 1
+             *     _tmpRow = []
+             *       i = 0 (A):
+             *         A[1] = 1 0 1
+             *         _tmpRow = 1 0 1
+             *       i = 1 (" ")
+             *         " " = 0
+             *         _tpmRow = 1 0 1 0
+             *       i = 2 (B)
+             *         B[1] = 1 0 1
+             *         _tmpRow = 1 0 1 0 1 0 1
+             *     _tmpRow.Count > 0:
+             *       charactersList = [
+             *         0 1 0 0 1 0 1,
+             *         1 0 1 0 1 0 1
+             *       ]
+             *   y = N... etc
+             */
             List<bool[]> charactersList = new List<bool[]>();
 
             // Loop through each row of a Pixel Character
@@ -497,14 +541,14 @@ namespace AlniTimeBoxMiniConsoleApp
 
                     // Check if the current character is in the textChars array
                     // AND that the current row (y) is within the current character height
-                    if (i < textChars.Length && y < textChars[i].Length)
+                    if (i < textChars.Length && y < _char.Length)
                     {
                         // Some characters (like the line break, "\n") has less rows than the
                         // default Pixel character height
 
-                        // Add the current pixel of the character to right of the previous pixel
-                        _tmpRow.AddRange(textChars[i][y]);
-                        // The previous pixel might be from another character (loops through each
+                        // Append the current pixel character row of to right of the previous pixel character row
+                        _tmpRow.AddRange(_char[y]);
+                        // The previous pixel character row might be from another character (loops through each
                         // character while looping through each row of default Pixel character height)
                     }
                 }
