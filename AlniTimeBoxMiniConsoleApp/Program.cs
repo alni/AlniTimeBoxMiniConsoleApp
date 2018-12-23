@@ -131,6 +131,62 @@ namespace AlniTimeBoxMiniConsoleApp
             box.SetTimeColor(Color.Orange);
             box.SetTime(DateTime.Now);
 
+            //TestDevice(box);
+
+            while (true)
+            {
+                string[] _params = Console.ReadLine().Split(' ');
+                string command = _params[0];
+                if (command == "write")
+                {
+                    _params = string.Join(" ", _params.Skip(1).ToArray()).Split(';');
+                    string[] text = _params[0].Replace("|", "\n").Split(' ');
+                    string[] color = _params[1].Split(' ');
+                    List<Color> colors = new List<Color>();
+                    foreach (string _color in color)
+                    {
+                        colors.Add(ColorTranslator.FromHtml(_color));
+                    }
+
+                    Color[][] message = CreateMessage(
+                        text,
+                        colors.ToArray()
+                    );
+
+                    Color[][] messageFilled = PixelTextHelper.FillDimensions(message);
+
+                    box.ShowPixelArt(messageFilled);
+                }
+                else if (command == "view")
+                {
+                    TimeBoxDevice.ViewType defaultView = TimeBoxDevice.ViewType.Clock;
+                    TimeBoxDevice.ViewType viewType = defaultView;
+                    if (_params.Length > 1)
+                    {
+                        string arg = _params[1];
+                        try
+                        {
+                            Type enumType = typeof(TimeBoxDevice.ViewType);
+                            
+                            viewType = (TimeBoxDevice.ViewType)Enum.Parse(enumType, arg);
+                            if (Enum.IsDefined(enumType, viewType) == false)
+                            {
+                                viewType = defaultView;
+                            }
+                        }
+                        catch (ArgumentException)
+                        {
+                            viewType = defaultView;
+                        }
+                    }
+                    box.SetView(viewType);
+                }
+            }
+            //Thread.Sleep(Int32.MaxValue);
+        }
+
+        private static void TestDevice(AlniTimeBoxDevice box)
+        {
             //box.ShowPixelArt(COLOR_TEXT_MOM);
 
             //box.ShowPixelArt(PixelTextHelper.CharToPixelColors(PixelTextHelper.TEXT_CHAR_A, Color.Green));
@@ -200,33 +256,6 @@ namespace AlniTimeBoxMiniConsoleApp
             //box.ShowImage("C:\\Users\\alexa\\Desktop\\1f355.png");
 
             //box.AnimateImages("C:\\Work\\projects\\Knom.TimeBox\\src\\SampleApp\\testdata\\exp");
-
-            while (true)
-            {
-                string[] _params = Console.ReadLine().Split(' ');
-                string command = _params[0];
-                if (command == "write")
-                {
-                    _params = string.Join(" ", _params.Skip(1).ToArray()).Split(';');
-                    string[] text = _params[0].Replace("|", "\n").Split(' ');
-                    string[] color = _params[1].Split(' ');
-                    List<Color> colors = new List<Color>();
-                    foreach (string _color in color)
-                    {
-                        colors.Add(ColorTranslator.FromHtml(_color));
-                    }
-
-                    Color[][] message = CreateMessage(
-                        text,
-                        colors.ToArray()
-                    );
-
-                    Color[][] messageFilled = PixelTextHelper.FillDimensions(message);
-
-                    box.ShowPixelArt(messageFilled);
-                }
-            }
-            //Thread.Sleep(Int32.MaxValue);
         }
 
         private static Color[][] CreateMessage(string[] text, Color[] colors)
