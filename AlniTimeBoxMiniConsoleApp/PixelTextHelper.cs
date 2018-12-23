@@ -403,26 +403,44 @@ namespace AlniTimeBoxMiniConsoleApp
             TEXT_CHAR_SET.Add("\n", TEXT_CHAR_LINE_BREAK);
         }
 
+        /// <summary>
+        /// Convert text to Pixel characters
+        /// 
+        /// Each Pixel character is defined as a bool[][] array
+        /// </summary>
+        /// <param name="text">The text to convert</param>
+        /// <returns>Array of Pixel characters</returns>
         public static bool[][][] TextToPixelChars(string text)
         {
             List<bool[][]> pixelChars = new List<bool[][]>();
             char[] chars = text.ToArray();
+            // Loop through each character of the text
             for (int i = 0; i < chars.Length; i++)
             {
                 char _char = chars[i];
+
+                // Convert the character to a Pixel character
                 bool[][] pixelChar = TEXT_CHAR_SET[_char.ToString()];
-                pixelChars.Add(pixelChar);
+                pixelChars.Add(pixelChar); // Add the pixel character to the list
                 if (i < chars.Length - 1)
                 {
+                    // If not at the last character yet, add a spacing between the characters
                     pixelChars.Add(TEXT_CHAR_SET["{SPACING}"]);
                 }
             }
-            return pixelChars.ToArray();
+            return pixelChars.ToArray(); // Return the list as an array
         }
 
 
         // TODO: Create function to translate the chars & numbers to Pixel Colors
         // (input: single "bool[][]" char var; "Color" char color var)
+
+        /// <summary>
+        /// Convert Pixel Character to Pixel Colors
+        /// </summary>
+        /// <param name="textChar">The Pixel Character to convert</param>
+        /// <param name="color">The desired Color of the character</param>
+        /// <returns>Array of Pixel Colors</returns>
         public static Color[][] CharToPixelColors(bool[][] textChar, Color color)
         {
             Color[][] pixelColors = new Color[textChar.Length][];
@@ -448,27 +466,51 @@ namespace AlniTimeBoxMiniConsoleApp
         // TODO: Create function to combine the chars & numbers to Pixel Colors "word"
         // (input: multiple "bool[][]..." char vars; "Color" char color var. OR: multiple "Color[][]..." Pixel Color char vars)
 
+        /// <summary>
+        /// Convert Pixel Characters to Pixel Colors Word
+        /// </summary>
+        /// <param name="color">The desired color of the Pixel Colors Word</param>
+        /// <param name="textChars">The Pixel Characters to convert</param>
+        /// <returns>Array of Pixel Colors</returns>
         public static Color[][] CharsToPixelColorsWord(Color color, params bool[][][] textChars)
         {
             return CharsToPixelColorsWord(textChars, color);
         }
+        /// <summary>
+        /// Convert Pixel Characters to Pixel Colors Word
+        /// </summary>
+        /// <param name="textChars">The Pixel Characters to convert</param>
+        /// <param name="color">The desired color of the Pixel Colors Word</param>
+        /// <returns>Array of Pixel Colors</returns>
         public static Color[][] CharsToPixelColorsWord(bool[][][] textChars, Color color)
         {
             List<bool[]> charactersList = new List<bool[]>();
-            
+
+            // Loop through each row of a Pixel Character
             for (int y = 0; y < TEXT_CHAR_HEIGHT; y++)
             {
-                List<bool> _tmpRow = new List<bool>();
+                List<bool> _tmpRow = new List<bool>(); // Create temporary row
+                // Loop through each Pixel Character in the array
                 for (int i = 0; i < textChars.Length; i++)
                 {
-                    bool[][] _char = textChars[i];
+                    bool[][] _char = textChars[i]; // Store the current character
+
+                    // Check if the current character is in the textChars array
+                    // AND that the current row (y) is within the current character height
                     if (i < textChars.Length && y < textChars[i].Length)
                     {
+                        // Some characters (like the line break, "\n") has less rows than the
+                        // default Pixel character height
+
+                        // Add the current pixel of the character to right of the previous pixel
                         _tmpRow.AddRange(textChars[i][y]);
+                        // The previous pixel might be from another character (loops through each
+                        // character while looping through each row of default Pixel character height)
                     }
                 }
                 if (_tmpRow.Count > 0)
                 {
+                    // Only add the current row of pixels if it is not empty
                     charactersList.Add(_tmpRow.ToArray());
                 }
             }
@@ -476,6 +518,11 @@ namespace AlniTimeBoxMiniConsoleApp
             return CharToPixelColors(characters, color);
         }
 
+        /// <summary>
+        /// Fill the empty spaces of the TimeBox device with Black Pixel Colors
+        /// </summary>
+        /// <param name="colors">The array of Pixel Colors to fill</param>
+        /// <returns>Array of Pixel Colors with size that matches the dimensions of the TimeBox device</returns>
         public static Color[][] FillDimensions(Color[][] colors)
         {
             List<Color[]> colorsList = new List<Color[]>(colors);
